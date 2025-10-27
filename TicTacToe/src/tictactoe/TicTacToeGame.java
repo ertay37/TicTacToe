@@ -4,6 +4,8 @@ import java.util.*;
 public class TicTacToeGame {
   private final Scanner scanner = new Scanner(System.in);
 
+  // pre: humanPlayer is either 1 (X) or -1 (O)
+  // post: plays one complete game, prints board state, announces winner or tie
   public void playTicTacToe(int humanPlayer) {
     TicTacToeBoard board = new TicTacToeBoard();
     int currentPlayer = humanPlayer;
@@ -38,6 +40,8 @@ public class TicTacToeGame {
     }
   }
 
+  // pre: board is initialized
+  // post: returns valid position (1-9) that is empty on the board
   private int getPlayerMove(TicTacToeBoard board) {
     while (true) {
       System.out.print("Enter a position (1-9): ");
@@ -55,6 +59,8 @@ public class TicTacToeGame {
     }
   }
 
+  // pre: board is initialized
+  // post: returns a valid available position (1-9) on the board
   private int getComputerMove(TicTacToeBoard board) {
     List<Integer> available = board.getAvailablePositions();
     return available.get(new Random().nextInt(available.size()));

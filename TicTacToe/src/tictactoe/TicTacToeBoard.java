@@ -14,15 +14,20 @@ public class TicTacToeBoard {
       { 0, 4, 8 }, { 2, 4, 6 } // Diagonals
   };
 
+  // pre: position is between 1 and 9
+  // post: returns true if the position is empty, false otherwise
   public boolean isEmpty(int position) {
     return board[position - 1] == EMPTY;
   }
 
+  // pre: position is between 1 and 9, value is X, O, or EMPTY
+  // post: board at position is updated to value
   public void setPosition(int position, int value) {
     board[position - 1] = value;
   }
 
-  public int getWinner() {
+  // pre: board is initialized with valid values (X, O, EMPTY)
+  // post: returns X if player X wins, O if player O wins, EMPTY if no winner  public int getWinner() {
     for (int[] combo : WINNING_COMBOS) {
       int sum = board[combo[0]] + board[combo[1]] + board[combo[2]];
       if (sum == 3)
@@ -33,6 +38,8 @@ public class TicTacToeBoard {
     return EMPTY;
   }
 
+  // pre: board is initialized
+  // post: returns true if no EMPTY positions remain, false otherwise
   public boolean isFull() {
     for (int cell : board) {
       if (cell == EMPTY)
@@ -41,6 +48,8 @@ public class TicTacToeBoard {
     return true;
   }
 
+  // pre: board is initialized
+  // post: returns a list of integers corresponding to empty positions (1-9)
   public List<Integer> getAvailablePositions() {
     List<Integer> positions = new ArrayList<>();
     for (int i = 0; i < board.length; i++) {
@@ -51,6 +60,8 @@ public class TicTacToeBoard {
     return positions;
   }
 
+  // pre: board is initialized
+  // post: prints board state with X, O, and separators
   public void print() {
     for (int i = 0; i < 9; i++) {
       String mark = board[i] == X ? "X" : board[i] == O ? "O" : " ";
